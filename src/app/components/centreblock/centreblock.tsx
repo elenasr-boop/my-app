@@ -1,3 +1,4 @@
+import Filter from "../filter/filter";
 import PlayList from "../playlist/playlist";
 import styles from "./centreblock.module.css";
 import classNames from "classnames";
@@ -17,24 +18,7 @@ export default function CenterBlock() {
         />
       </div>
       <h2 className={styles.centerblock__h2}>Треки</h2>
-      <div className={classNames(styles.centerblock__filter, styles.filter)}>
-        <div className={styles.filter__title}>Искать по:</div>
-        <div
-          className={classNames(
-            styles.filter__button,
-            styles.buttonAuthor,
-            styles._btnText
-          )}
-        >
-          исполнителю
-        </div>
-        <div className={classNames(styles.filter__button, styles._btnText)}>
-          году выпуска
-        </div>
-        <div className={classNames(styles.filter__button, styles._btnText)}>
-          жанру
-        </div>
-      </div>
+      <Filter />
       <div className={classNames(styles.centerblock__content)}>
         <div className={classNames(styles.content__title)}>
           <div className={classNames(styles.playlistTitle__col, styles.col01)}>
