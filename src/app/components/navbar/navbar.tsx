@@ -1,8 +1,13 @@
+'use client'
+
 import styles from "./navbar.module.css";
 import classNames from "classnames";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+
   return (
     <nav className={classNames(styles.main__nav, styles.nav)}>
       <div className={classNames(styles.nav__logo, styles.logo)}>
@@ -14,12 +19,13 @@ export default function Navbar() {
           height={17}
         />
       </div>
-      <div className={classNames(styles.nav__burger, styles.burger)}>
+      <button className={classNames(styles.nav__burger, styles.burger)} onClick={() => setIsBurgerOpen(!isBurgerOpen)} >
         <span className={styles.burger__line}></span>
         <span className={styles.burger__line}></span>
         <span className={styles.burger__line}></span>
-      </div>
-      <div className={classNames(styles.nav__menu, styles.menu)}>
+      </button>
+      {isBurgerOpen && (
+        <div className={classNames(styles.nav__menu, styles.menu)}>
         <ul className={styles.menu__list}>
           <li className={styles.menu__item}>
             <a href="#" className={styles.menu__link}>
@@ -38,6 +44,7 @@ export default function Navbar() {
           </li>
         </ul>
       </div>
+      )}
     </nav>
   );
 }
