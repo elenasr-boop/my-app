@@ -1,6 +1,8 @@
 .main__sidebar {
-    max-width: 418px;
-    padding: 20px 90px 20px 78px;
+    max-width: 16.7%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 50px;
 }
 
 .sidebar__personal {
@@ -80,6 +82,7 @@
 }
 
 .sidebar__img {
-    width: 100%;
+    width: 15vw;
+    max-width: 230px;
     height: auto;
 }
