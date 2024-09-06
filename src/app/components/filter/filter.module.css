@@ -10,6 +10,7 @@
     -ms-flex-align: center;
     align-items: center;
     margin-bottom: 51px;
+    gap: 10px;
 }
 
 .filter__title {
@@ -28,10 +29,8 @@
     border: 1px solid #ffffff;
     border-radius: 60px;
     padding: 6px 20px;
-}
-
-.filter__button:not(:last-child) {
-    margin-right: 10px;
+    background-color: #181818;
+    color: #fff;
 }
 
 ._btnText:hover {
@@ -44,4 +43,39 @@
     border-color: #ad61ff;
     color: #ad61ff;
     cursor: pointer;
+}
+
+.filt {
+    background-color: #fff;
+    position: absolute;
+    top: 288px;
+    background-color: #494949;
+    border-radius: 12px;
+    width: 248px;
+    max-height: 305px;
+    padding: 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.filt__item {
+    background-color: #494949;
+    border: none;
+    color: #FFFFFF;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    text-underline-offset: 3px;
+}
+
+.filt__item:hover {
+    text-decoration: underline;
+}
+
+.filt__item:active {
+    text-decoration: underline;
+    color: #B672FF;
 }
