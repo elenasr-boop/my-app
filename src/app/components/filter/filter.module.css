@@ -52,11 +52,24 @@
     background-color: #494949;
     border-radius: 12px;
     width: 248px;
+    height: auto;
     max-height: 305px;
     padding: 34px;
     display: flex;
     flex-direction: column;
     gap: 25px;
+    overflow: auto;
+}
+
+.filt::-webkit-scrollbar {
+    width: 4px;
+    background-color: #4B4949;
+    left: -19px;
+    scroll-margin-right: 34px;
+}
+
+.filt::-webkit-scrollbar-thumb {
+    background-color: #fff;
 }
 
 .filt__item {

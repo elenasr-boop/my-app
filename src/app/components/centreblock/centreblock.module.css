@@ -39,6 +39,8 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    overflow: auto;
+    height: calc(17% - 78px);
 }
 
 .search__svg {

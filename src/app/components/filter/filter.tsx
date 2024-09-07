@@ -3,8 +3,14 @@
 import classNames from "classnames";
 import styles from "./filter.module.css";
 import { useState } from "react";
+import { TrackType } from "@/app/types/tracks";
+import { getUniqueValues } from "@/app/utils/getUniqueValues";
 
-export default function Filter() {
+type FilterProps = {
+  tracks: TrackType[];
+};
+
+export default function Filter({ tracks }: FilterProps) {
   const [isOpen, setIsOpen] = useState({ isOp: false, filter: 0 });
 
   function handleFiltChange(type: number) {
@@ -15,15 +21,9 @@ export default function Filter() {
     }
   }
 
-  const arr1 = [
-    "Michael Jackson",
-    "Frank Sinatra",
-    "Calvin Harris",
-    "Zhu",
-    "Arctic Monkeys",
-  ];
-  const arr2 = ["Рок", "Хип-хоп", "Поп-музыка", "Техно", "Инди"];
-  const arr3 = ["По умолчанию", "Сначала новые", "Сначала старые"];
+  const arr1 = getUniqueValues(tracks, "author");
+  const arr3 = getUniqueValues(tracks, "genre");
+  const arr2 = ["По умолчанию", "Сначала новые", "Сначала старые"];
 
   return (
     <div className={classNames(styles.centerblock__filter, styles.filter)}>
