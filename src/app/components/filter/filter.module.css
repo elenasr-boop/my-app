@@ -33,6 +33,11 @@
     color: #fff;
 }
 
+.filter__button_active {
+    border-color: #ad61ff;
+    color: #ad61ff;
+}
+
 ._btnText:hover {
     border-color: #d9b6ff;
     color: #d9b6ff;
@@ -45,19 +50,25 @@
     cursor: pointer;
 }
 
-.filt {
+.wrapper {
+    padding: 34px;
+    position: relative;
     background-color: #fff;
     position: absolute;
     top: 288px;
     background-color: #494949;
     border-radius: 12px;
     width: 248px;
-    height: auto;
-    max-height: 305px;
     padding: 34px;
+}
+
+.filt {
+    
     display: flex;
     flex-direction: column;
     gap: 25px;
+    height: auto;
+    max-height: 305px;
     overflow: auto;
 }
 
@@ -70,6 +81,7 @@
 
 .filt::-webkit-scrollbar-thumb {
     background-color: #fff;
+    border-radius: 2px;
 }
 
 .filt__item {

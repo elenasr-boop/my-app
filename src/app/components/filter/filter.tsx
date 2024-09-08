@@ -32,38 +32,45 @@ export default function Filter({ tracks }: FilterProps) {
         <button
           className={classNames(
             styles.filter__button,
-            styles.buttonAuthor,
-            styles._btnText
+            styles._btnText,
+            isOpen.filter === 1 ? styles.filter__button_active : ""
           )}
           onClick={() => handleFiltChange(1)}
         >
           исполнителю
         </button>
         {isOpen.isOp && isOpen.filter === 1 && (
-          <div className={styles.filt}>
-            {arr1.map((el, id) => {
-              return (
-                <button
-                  key={id}
-                  className={styles.filt__item}
-                  onClick={() => console.log(el, id)}
-                >
-                  {el}
-                </button>
-              );
-            })}
+          <div className={styles.wrapper}>
+            <div className={styles.filt}>
+              {arr1.map((el, id) => {
+                return (
+                  <button
+                    key={id}
+                    className={styles.filt__item}
+                    onClick={() => console.log(el, id)}
+                  >
+                    {el}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         )}
       </div>
       <div>
         <button
-          className={classNames(styles.filter__button, styles._btnText)}
+          className={classNames(
+            styles.filter__button,
+            styles._btnText,
+            isOpen.filter === 2 ? styles.filter__button_active : ""
+          )}
           onClick={() => handleFiltChange(2)}
         >
           году выпуска
         </button>
         {isOpen.isOp && isOpen.filter === 2 && (
-          <div className={styles.filt}>
+          <div className={styles.wrapper}>
+            <div className={styles.filt}>
             {arr2.map((el, id) => {
               return (
                 <button
@@ -78,17 +85,23 @@ export default function Filter({ tracks }: FilterProps) {
               );
             })}
           </div>
+          </div>
         )}
       </div>
       <div>
         <button
-          className={classNames(styles.filter__button, styles._btnText)}
+          className={classNames(
+            styles.filter__button,
+            styles._btnText,
+            isOpen.filter === 3 ? styles.filter__button_active : ""
+          )}
           onClick={() => handleFiltChange(3)}
         >
           жанру
         </button>
         {isOpen.isOp && isOpen.filter === 3 && (
-          <div className={styles.filt}>
+          <div className={styles.wrapper}>
+            <div className={styles.filt}>
             {arr3.map((el, id) => {
               return (
                 <button
@@ -100,6 +113,7 @@ export default function Filter({ tracks }: FilterProps) {
                 </button>
               );
             })}
+          </div>
           </div>
         )}
       </div>
