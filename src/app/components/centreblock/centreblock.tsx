@@ -1,8 +1,22 @@
+import { getTracks } from "@/app/api";
+import Filter from "../filter/filter";
 import PlayList from "../playlist/playlist";
 import styles from "./centreblock.module.css";
 import classNames from "classnames";
+import { TrackType } from "@/app/types/tracks";
 
-export default function CenterBlock() {
+export default async function CenterBlock() {
+  let tracks: TrackType[] = [];
+  let isError = "";
+
+  try {
+    let tracki = await getTracks();
+    tracks = tracki.data;
+    isError = "";
+  } catch (e: unknown) {
+    isError = e instanceof Error ? "Ошибка при загрузке треков " + e.message : "Неизвестная ошибка";
+  }
+
   return (
     <div className={classNames(styles.main__centerblock, styles.centerblock)}>
       <div className={classNames(styles.centerblock__search, styles.search)}>
@@ -17,24 +31,8 @@ export default function CenterBlock() {
         />
       </div>
       <h2 className={styles.centerblock__h2}>Треки</h2>
-      <div className={classNames(styles.centerblock__filter, styles.filter)}>
-        <div className={styles.filter__title}>Искать по:</div>
-        <div
-          className={classNames(
-            styles.filter__button,
-            styles.buttonAuthor,
-            styles._btnText
-          )}
-        >
-          исполнителю
-        </div>
-        <div className={classNames(styles.filter__button, styles._btnText)}>
-          году выпуска
-        </div>
-        <div className={classNames(styles.filter__button, styles._btnText)}>
-          жанру
-        </div>
-      </div>
+      {isError === "" && <span>{isError}</span>}
+      <Filter tracks={tracks} />
       <div className={classNames(styles.centerblock__content)}>
         <div className={classNames(styles.content__title)}>
           <div className={classNames(styles.playlistTitle__col, styles.col01)}>
@@ -52,7 +50,7 @@ export default function CenterBlock() {
             </svg>
           </div>
         </div>
-        <PlayList />
+        <PlayList tracks={tracks}/>
       </div>
     </div>
   );

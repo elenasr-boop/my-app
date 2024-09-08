@@ -67,11 +67,6 @@
     align-items: center;
 }
 
-.sidebar__item {
-    width: 250px;
-    height: 150px;
-}
-
 .sidebar__item:not(:last-child) {
     margin-bottom: 30px;
 }
@@ -82,7 +77,7 @@
 }
 
 .sidebar__img {
-    width: 15vw;
     max-width: 230px;
+    width: 8vw;
     height: auto;
 }

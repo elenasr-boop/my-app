@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 
 export default function Home() {
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
