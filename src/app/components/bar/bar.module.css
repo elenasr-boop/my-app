@@ -57,3 +57,7 @@
     stroke: #ffffff;
     cursor: pointer;
 }
+
+.audio {
+    display: none;
+}
