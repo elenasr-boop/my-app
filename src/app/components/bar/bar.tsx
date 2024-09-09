@@ -51,8 +51,8 @@ export default function Bar() {
 
   function loopTrack() {
     const audio = audioRef.current;
+    audio.loop = !isLoop;
     setIsLoop(!isLoop);
-    audio.loop = isLoop;
   }
 
   return (
