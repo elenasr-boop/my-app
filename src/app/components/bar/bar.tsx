@@ -12,12 +12,14 @@ import { useEffect, useRef, useState } from "react";
 export default function Bar() {
   const { currentTrack } = useCurrentTrack();
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isLoop, setIsLoop] = useState(false);
   const audioRef = useRef(null);
 
   useEffect(() => {
     if (currentTrack) {
       const audio = audioRef.current;
       audio.play();
+      setIsPlaying(true);
     }
   }, [currentTrack]);
 
@@ -38,6 +40,12 @@ export default function Bar() {
     setIsPlaying(!isPlaying);
   }
 
+  function loopTrack() {
+    const audio = audioRef.current;
+    setIsLoop(!isLoop);
+    audio.loop = isLoop;
+  }
+
   return (
     <div className={styles.bar}>
       <audio ref={audioRef} src={track_file} className={styles.audio} />
@@ -45,7 +53,7 @@ export default function Bar() {
         <ProgressBar />
         <div className={styles.bar__playerBlock}>
           <div className={classNames(styles.bar__player, styles.player)}>
-            <PlayerControl isPlaying={isPlaying} setIsPlaying={playPauseTrack} />
+            <PlayerControl isPlaying={isPlaying} setIsPlaying={playPauseTrack} isLoop={isLoop} setIsLoop={loopTrack} />
             <TrackPlay name={name} author={author} />
           </div>
           <Volume />
