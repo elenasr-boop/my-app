@@ -8,6 +8,12 @@ import { TrackPlay } from "../trackPlay/trackPlay";
 export default function Bar () {
   const {currentTrack} = useCurrentTrack();
 
+  if(!currentTrack) {
+    return null;
+  }
+
+  const {name, author} = currentTrack;
+
     return (
         <div className={styles.bar}>
           <div className={styles.bar__content}>
@@ -54,7 +60,7 @@ export default function Bar () {
                   </div>
                 </div>
 
-                <TrackPlay />
+                <TrackPlay name={name} author={author} />
               </div>
               <div
                 className={classNames(styles.bar__volumeBlock, styles.volume)}

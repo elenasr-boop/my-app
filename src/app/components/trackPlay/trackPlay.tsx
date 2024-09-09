@@ -3,7 +3,12 @@
 import classNames from "classnames";
 import styles from "./trackPlay.module.css";
 
-export function TrackPlay () {
+type TrackPlayProps = {
+    name: string|undefined,
+    author: string|undefined,
+}
+
+export function TrackPlay ({name, author}: TrackPlayProps) {
     return (<div
         className={classNames(
           styles.player__trackPlay,
@@ -21,12 +26,12 @@ export function TrackPlay () {
               className={styles.trackPlay__authorLink}
               href="http://"
             >
-              Ты та...
+              {name}
             </a>
           </div>
           <div className={styles.trackPlay__album}>
             <a className={styles.trackPlay__albumLink} href="http://">
-              Баста
+              {author}
             </a>
           </div>
         </div>
