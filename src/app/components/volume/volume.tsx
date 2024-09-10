@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import styles from "./volume.module.css";
-import { ChangeEventHandler, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 type VolumeProps = {
   volume: number;

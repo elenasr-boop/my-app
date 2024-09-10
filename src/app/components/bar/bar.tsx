@@ -16,6 +16,7 @@ export default function Bar() {
   const [isLoop, setIsLoop] = useState(false);
   const audioRef = useRef(null);
   const [volume, setVolume] = useState(0.5);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
     if (currentTrack) {
@@ -61,11 +62,14 @@ export default function Bar() {
         ref={audioRef}
         src={track_file}
         className={styles.audio}
-        onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
+        onTimeUpdate={(e) => {
+          setCurrentTime(e.currentTarget.currentTime);
+          setDuration(e.currentTarget.duration);
+        }}
       />
       <div className={styles.bar__content}>
         <ProgressBar
-          max={audioRef.current?.duration}
+          max={duration}
           value={currentTime}
           step={0.01}
           onChange={(e) => (audioRef.current.currentTime = e.target.value)}
