@@ -3,14 +3,15 @@
 import { TrackType } from "@/app/types/tracks";
 import styles from "./track.module.css";
 import classNames from "classnames";
-import { useCurrentTrack } from "@/app/context/CurrentTrackProvider";
+import { useAppDispatch } from "@/app/store/store";
+import { setCurrentTrackState } from "@/app/store/features/CurrentTrack";
 
 type TrackProps = {
   track: TrackType;
 };
 
 export default function Track({ track }: TrackProps) {
-  const {setCurrentTrack} = useCurrentTrack();
+  const dispatch = useAppDispatch();
   const { name, author, album, duration_in_seconds } = track;
   const time = `${Math.floor(duration_in_seconds / 60)}:${
     duration_in_seconds % 60 < 10
@@ -19,7 +20,7 @@ export default function Track({ track }: TrackProps) {
   }`;
 
   function handleClick() {
-    setCurrentTrack(track);
+    dispatch(setCurrentTrackState(track));
   }
 
   return (

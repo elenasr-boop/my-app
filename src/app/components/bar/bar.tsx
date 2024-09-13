@@ -1,6 +1,5 @@
 "use client";
 
-import { useCurrentTrack } from "@/app/context/CurrentTrackProvider";
 import styles from "./bar.module.css";
 import classNames from "classnames";
 import { TrackPlay } from "../trackPlay/trackPlay";
@@ -8,9 +7,10 @@ import { Volume } from "../volume/volume";
 import { PlayerControl } from "../playerControl/playerControl";
 import { ProgressBar } from "../progressBar/progressBar";
 import { useEffect, useRef, useState } from "react";
+import { useAppSelector } from "@/app/store/store";
 
 export default function Bar() {
-  const { currentTrack } = useCurrentTrack();
+  const { currentTrack } = useAppSelector((state) => state.currentTrack);
   const [isPlaying, setIsPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [isLoop, setIsLoop] = useState(false);
@@ -19,6 +19,7 @@ export default function Bar() {
   const [duration, setDuration] = useState(0);
 
   useEffect(() => {
+    console.log(`Выбран трек ${currentTrack}`);
     if (currentTrack) {
       const audio = audioRef.current;
       audio.play();
