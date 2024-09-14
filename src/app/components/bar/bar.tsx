@@ -7,27 +7,29 @@ import { Volume } from "../volume/volume";
 import { PlayerControl } from "../playerControl/playerControl";
 import { ProgressBar } from "../progressBar/progressBar";
 import { useEffect, useRef, useState } from "react";
-import { useAppSelector } from "@/app/store/store";
+import { useAppDispatch, useAppSelector } from "@/app/store/store";
+import { setIsPlaying } from "@/app/store/features/playlistSlice";
 
 export default function Bar() {
-  const { currentTrack } = useAppSelector((state) => state.currentTrack);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
+  const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
   const [currentTime, setCurrentTime] = useState(0);
   const [isLoop, setIsLoop] = useState(false);
   const audioRef = useRef(null);
   const [volume, setVolume] = useState(0.5);
   const [duration, setDuration] = useState(0);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     console.log(`Выбран трек ${currentTrack}`);
     if (currentTrack) {
       const audio = audioRef.current;
       audio.play();
-      setIsPlaying(true);
+      dispatch(setIsPlaying(true));
       setCurrentTime(0);
       setCurrentTime(0);
     }
-  }, [currentTrack]);
+  }, [currentTrack, dispatch]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -44,8 +46,10 @@ export default function Bar() {
   function playPauseTrack() {
     const audio = audioRef.current;
     if (isPlaying) {
+      dispatch(setIsPlaying(false));
       audio.pause();
     } else {
+      dispatch(setIsPlaying(true));
       audio.play();
     }
     setIsPlaying(!isPlaying);

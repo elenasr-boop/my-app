@@ -1,11 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { currentTrackReducer } from "./features/CurrentTrack";
 import { TypedUseSelectorHook, useDispatch, useSelector, useStore } from "react-redux";
+import { playlistReducer } from "./features/playlistSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: combineReducers({
-      currentTrack: currentTrackReducer,
+      playlist: playlistReducer,
     }),
   });
 };
